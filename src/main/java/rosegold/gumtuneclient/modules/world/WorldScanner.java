@@ -1,5 +1,5 @@
 package rosegold.gumtuneclient.modules.world;
-a
+
 import cc.polyfrost.oneconfig.utils.Multithreading;
 import net.minecraft.block.BlockColored;
 import net.minecraft.block.BlockPlanks;
