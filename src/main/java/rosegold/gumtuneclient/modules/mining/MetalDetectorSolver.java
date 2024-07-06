@@ -117,15 +117,6 @@ public class MetalDetectorSolver {
 
             }
 
-            if (GumTuneClientConfig.metalDetectorCalculatePath) {
-                if (predictedChestLocations.size() == 1 && !PathFinder.hasPath() && !PathFinder.calculating) {
-                    Multithreading.runAsync(() -> {
-                        PathFinding.initTeleport();
-                        PathFinder.setup(new BlockPos(VectorUtils.floorVec(GumTuneClient.mc.thePlayer.getPositionVector().addVector(0, -1, 0))), predictedChestLocations.iterator().next(), 8, 400);
-                    });
-                }
-            }
-
             /*if (predictedChestLocations.size() > 1) {
                 BlockPos playerPos = player.getPosition();
                 for (BlockPos blockPos : BlockPos.getAllInBox(playerPos.add(-1, 0, -1), playerPos.add(1, 0, 1))) {
@@ -210,7 +201,6 @@ public class MetalDetectorSolver {
         lastScan = 0;
         lastPos = null;
         predictedChestLocations.clear();
-        absoluteChestCoords.clear();
     }
 
     private static void scanChunks() {
@@ -252,8 +242,6 @@ public class MetalDetectorSolver {
                 loop = true;
             }
         }
-
-        ModUtils.sendMessage("Found anchor at " + new BlockPos(posX, posY, posZ));
         return new BlockPos(posX, posY, posZ);
     }
 
